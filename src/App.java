@@ -57,31 +57,53 @@ import java.util.*;
  */
 
 //SAMPLE USAGE: A+
-/** The magic number is 2. Shh! Don't tell anyone
- *  Enter a guess:
- *  10
- *  Way off!
- *  Enter a guess:
- *  3
- *  Very close!
- *  Enter a guess:
- *  2
- *  It took you 3 guesses.
+/**
+ * The magic number is 2. Shh! Don't tell anyone
+ * Enter a guess:
+ * 10
+ * Way off!
+ * Enter a guess:
+ * 3
+ * Very close!
+ * Enter a guess:
+ * 2
+ * It took you 3 guesses.
  */
-
-
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //DO NOT TOUCH THE THREE LINES BELOW
+        // DO NOT TOUCH THE THREE LINES BELOW
         int magicNumber = getMeARandomNumber();
-        System.out.println("The magic number is "+ magicNumber + ". Shh! Don't tell anyone");
+        System.out.println("The magic number is " + magicNumber + ". Shh! Don't tell anyone");
         Scanner reader = new Scanner(System.in);
-    }
+        int countGuess = 0;
+        while (true) {
+            System.out.println("Enter a guess:");
+            int number = Integer.valueOf(reader.nextLine());
 
+            if (number == magicNumber) {
+                break;
+    
+            }
+        if (number > 10 || number < 1) {
 
-    //Do not modify!!!
-    public static int getMeARandomNumber(){
+            System.out.println("Enter a valid number.");
+        }if (number + 2 == magicNumber || number - 2 == magicNumber || number - 1 == magicNumber
+                || number + 1 == magicNumber) {
+                    countGuess += 1;
+            System.out.println("So close!");
+        } else{
+            System.out.println("Way off!");
+            countGuess += 1;
+        
+        }}System.out.println("It took you " + countGuess + " guesses.");
+
+           }
+
+    
+
+    // Do not modify!!!
+    public static int getMeARandomNumber() {
         Random random = new Random();
         return random.nextInt(10) + 1;
     }
